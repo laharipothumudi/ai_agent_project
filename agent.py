@@ -13,17 +13,16 @@ import os, json, re
 from dotenv import load_dotenv
 from typing import TypedDict, Literal
 from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
-from langchain_openai import ChatOpenAI
+from langchain_groq import ChatGroq
 from langgraph.graph import StateGraph, END
 import vector_store
 
 load_dotenv()
 
 # ── LLM ───────────────────────────────────────────────────────────────────────
-llm = ChatOpenAI(
+llm = ChatGroq(
     model="llama-3.3-70b-versatile",
     api_key=os.getenv("GROQ_API_KEY"),
-    base_url="https://api.groq.com/openai/v1",
     temperature=0.1,
     max_tokens=2048,
 )
